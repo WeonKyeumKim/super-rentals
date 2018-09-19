@@ -11,7 +11,7 @@ module('Acceptance | list rentals', function(hooks) {
     // screen 의 specific part 를 click 한다
     // await click(".menu-about");
     assert.equal(currentURL(), '/list-rentals');
-    // get current URL 
+    // get current URL
     assert.equal(currentURL(), '/about', 'should navigate to about');
   });
   */
@@ -29,6 +29,11 @@ module('Acceptance | list rentals', function(hooks) {
   test('visiting /contact', async function(assert) {
       await visit('/contact');
       assert.equal(currentURL(), '/contact');
+  })
+
+  test('should list available rentals', async function(assert) {
+      await visit('/');
+      assert.equal(this.element.querySelectorAll('.listing').length, 3, 'should display 3 listings');
   })
 
   //test('should filter the list of rentals by city.', async function (assert) {
