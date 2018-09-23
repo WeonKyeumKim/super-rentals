@@ -1,9 +1,14 @@
 import { module, test } from 'qunit';
 import { visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
+/* for mirage */
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
+
 
 module('Acceptance | list rentals', function(hooks) {
   setupApplicationTest(hooks);
+  /* for mirage */
+  setupMirage(hooks);
 
   /* test('visiting /list-rentals', async function(assert) {
     // given URL 을 load 한다.
