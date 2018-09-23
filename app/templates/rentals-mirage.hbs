@@ -8,7 +8,11 @@
 </div>
 
 <!--
-  get data from model in rentals.js
+  rentals..js
+    rental: model name
+    return this.store.findAll('rental');
+  get name from model rental.js
+    .title, .owner, .category, .city, .bedrooms
 -->
 {{#each model as |rental|}}
   <article class="listing">
