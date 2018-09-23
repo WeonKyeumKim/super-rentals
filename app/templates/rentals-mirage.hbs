@@ -8,10 +8,15 @@
 </div>
 
 <!--
-  get data from model in rentals.js
+  rentals..js
+    rental: model name
+    return this.store.findAll('rental');
+  get name from model rental.js
+    .title, .owner, .category, .city, .bedrooms
 -->
 {{#each model as |rental|}}
   <article class="listing">
+    <img src="{{rental.image}}" alt="" />
     <h3>{{rental.title}}</h3>
     <div class="detail owner">
       <span>Owner:</span>{{rental.owner}}
