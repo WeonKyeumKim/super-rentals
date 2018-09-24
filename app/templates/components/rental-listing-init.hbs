@@ -4,17 +4,7 @@
   site 의 나머지 부분으로 부터 독립적으로 distribute 하는 것이 가능하다.
 -->
 <article class="listing">
-
-  <!--
-    adding toggle. set class="image wide" if isWide is true
-    .listing .wide img
-    .listing .wide small
-  -->
-  <a {{action 'toggleImageSize'}} class="image {{if isWide "wide"}}">
-    <img src="{{rental.image}}" alt="" />
-    <small>View Larger</small>
-  </a>
-
+  <img src="{{rental.image}}" alt="" />
   <h3>{{rental.title}}</h3>
   <div class="detail owner">
     <span>Owner:</span>{{rental.owner}}
