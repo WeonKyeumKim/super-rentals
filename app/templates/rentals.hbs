@@ -8,7 +8,7 @@
 </div>
 
 <!--
-  rentals..js
+  rentals.js
     rental: model name
     return this.store.findAll('rental');
   get name from model rental.js
@@ -16,5 +16,6 @@
   get list format from componen rental-listing.hbs
 -->
 {{#each model as |rentalUnit|}}
+  <!-- rental-listing: component name -->
   {{rental-listing rental=rentalUnit}}
 {{/each}}
