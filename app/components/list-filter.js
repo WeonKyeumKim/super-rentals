@@ -2,7 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['list-filter'],
-  value: '',
+  cityInput: '',
 
   init() {
     /*
@@ -25,7 +25,7 @@ export default Component.extend({
         from list-filter.hbs input
         this.value:
       */
-      let filterInputValue = this.value;
+      let filterInputValue = this.cityInput;
       let filterAction = this.cityInputAction;
 
       filterAction(filterInputValue).then((filteredResults) => this.set('results', filteredResults));

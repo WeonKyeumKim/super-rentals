@@ -10,9 +10,6 @@ export default Controller.extend({
     this action 은 value property 안에서 적용하고,
     user 가 type 한것과 match 하는 records 에 대한
     data store 안의 rental data 를 filter 한다.
-
-    param: input helper 의 value cityInput 이 자동으로
-    param 으로 pass 된다.
   */
     filterByCity(param) {
       if (param != '') {
