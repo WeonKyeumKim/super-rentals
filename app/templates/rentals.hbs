@@ -25,7 +25,7 @@
   data store 안의 rental data 를 filter 한다.
 -->
 
-{{#list-filter filter=(action 'filterByCity') as |filteredResults|}}
+{{#list-filter cityInput=(action 'filterByCity') as |filteredResults|}}
   <ul class="results">
     {{#each filteredResults as |rentalUnit|}}
       <li>{{rental-listing rental=rentalUnit}}</li>

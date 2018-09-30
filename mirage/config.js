@@ -40,7 +40,9 @@ export default function() {
 
     this.get('/rentals', function(db, request) {
       if(request.queryParams.city !== undefined) {
+          /* filter: method */
           let filteredRentals = rentals.filter(function(i) {
+            /* -1: array 에서 찾지 못한 경우 */
             return i.attributes.city.toLowerCase().indexOf(request.queryParams.city.toLowerCase()) !== -1;
           })
           return { data: filteredRentals }

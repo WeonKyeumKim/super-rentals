@@ -11,7 +11,7 @@ export default Component.extend({
       parameter 들을 encapsulate 하는 것이다.
     */
     this._super(...arguments);
-    this.filter('').then((results) => this.set('results', results));
+    this.cityInput('').then((results) => this.set('results', results));
   },
 
   actions: {
@@ -26,7 +26,7 @@ export default Component.extend({
         this.value:
       */
       let filterInputValue = this.value;
-      let filterAction = this.filter;
+      let filterAction = this.cityInput;
 
       filterAction(filterInputValue).then((filteredResults) => this.set('results', filteredResults));
     }
