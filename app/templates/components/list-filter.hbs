@@ -1,0 +1,28 @@
+{{! input 의 value 는 component 의 value property 로
+    bind 되어진다.
+    key-up property 는 handleFilterEntry action 으로
+    bind 되어질 것이다.
+    handleFilterEntry 은 search term filter 를 rentals
+    list 로 apply 할 것이고, results 라는 component
+    attribute 를 set 한다.
+    results attribute 는 template 안에 yield helper 로
+    pass 되어진다.
+    yield block component 안에서, those same results
+    attribute 는 filteredResults 로써 refer 되어진다.
+
+    value 는 controller rentals 의 param 으로 자동 pass 된다.
+}}
+
+{{input
+  type='text'
+  value=value
+  key-up=(action 'handleFilterEntry')
+  placeholder="Filter By City"
+  class="light"
+}}
+
+{{!
+  yield helper 는 component 로 부터 value들(results)을 return 한다.
+
+}}
+{{yield results}}
