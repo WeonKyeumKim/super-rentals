@@ -11,7 +11,7 @@ module.exports = {
     'ember'
   ],
   extends: [
-    'eslint:recommended',
+		'eslint:recommended',
     'plugin:ember/recommended'
   ],
   env: {

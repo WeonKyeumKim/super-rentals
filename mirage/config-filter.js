@@ -48,4 +48,5 @@ export default function() {
         return { data: rentals }
       }
     })
+
 }

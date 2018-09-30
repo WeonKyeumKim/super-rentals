@@ -14,8 +14,21 @@
   get name from model rental.js
     .title, .owner, .category, .city, .bedrooms
   get list format from componen rental-listing.hbs
+
+  controller action filterByCity 를 수행한 후에 결과는
+  filteredResults 를 return 한다.
+
+  user 가 component 안에 text field 에 type 할때,
+  controller 안에 filterByCity 가 call 되어진다.
+  this action 은 value property 안에서 적용하고,
+  user 가 type 한것과 match 하는 records 에 대한
+  data store 안의 rental data 를 filter 한다.
 -->
-{{#each model as |rentalUnit|}}
-  <!-- rental-listing: component name -->
-  {{rental-listing rental=rentalUnit}}
-{{/each}}
+
+{{#list-filter filter=(action 'filterByCity') as |filteredResults|}}
+  <ul class="results">
+    {{#each filteredResults as |rentalUnit|}}
+      <li>{{rental-listing rental=rentalUnit}}</li>
+    {{/each}}
+  </ul>
+{{/list-filter}}
