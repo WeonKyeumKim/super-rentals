@@ -2,7 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['list-filter'],
-  value: '',
+  cityInput: '',
 
   init() {
     /*
@@ -11,7 +11,7 @@ export default Component.extend({
       parameter 들을 encapsulate 하는 것이다.
     */
     this._super(...arguments);
-    this.filter('').then((results) => this.set('results', results));
+    this.cityInputAction('').then((results) => this.set('results', results));
   },
 
   actions: {
@@ -25,8 +25,8 @@ export default Component.extend({
         from list-filter.hbs input
         this.value:
       */
-      let filterInputValue = this.value;
-      let filterAction = this.filter;
+      let filterInputValue = this.cityInput;
+      let filterAction = this.cityInputAction;
 
       filterAction(filterInputValue).then((filteredResults) => this.set('results', filteredResults));
     }
