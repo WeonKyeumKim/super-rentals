@@ -4,7 +4,7 @@ export default function() {
     /* rentals: route name */
     let rentals =
         [{
-          type: 'rentalsa',
+          type: 'rentals',
           id: 'grand-old-mansion',
           attributes: {
             title: 'M-Grand Old Mansion',
@@ -15,7 +15,7 @@ export default function() {
             image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
           }
         }, {
-          type: 'rentalsa',
+          type: 'rentals',
           id: 'urban-living',
           attributes: {
             title: 'M-Urban Living',
@@ -26,7 +26,7 @@ export default function() {
             image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
           }
         }, {
-          type: 'rentalsa',
+          type: 'rentals',
           id: 'downtown-charm',
           attributes: {
             title: 'M-Downtown Charm',
