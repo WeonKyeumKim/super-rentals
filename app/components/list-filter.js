@@ -11,6 +11,11 @@ export default Component.extend({
       parameter 들을 encapsulate 하는 것이다.
     */
     this._super(...arguments);
+    /* async
+    this.cityInputAction('').then((results) =>
+      this.set('results', results));
+    */
+
     this.cityInputAction('').then((allResults) => {
       this.set('results', allResults.results);
     });
@@ -33,6 +38,12 @@ export default Component.extend({
       let filterInputValue = this.cityInput;
       let filterAction = this.cityInputAction;
 
+      /* async
+      filterAction(filterInputValue).then((filterResults) =>
+        this.set('results', filterResults));
+      )
+
+      */
       filterAction(filterInputValue).then((filterResults) => {
         if (filterResults.query === this.cityInput) {
           this.set('results', filterResults.results);

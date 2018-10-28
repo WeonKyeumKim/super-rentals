@@ -26,6 +26,13 @@ export default Controller.extend({
           add .then((results) => {
             return { query: param, results: results };
         */
+        /* async
+        if (param !== '') {
+          return this.store./query('rental', { city: param});
+        } else {
+          return this.store.findAll('rental');
+        }
+        */
         return this.store.query('rental', {city: param }).then((results) => {
           return { query: param, results: results };
         });
