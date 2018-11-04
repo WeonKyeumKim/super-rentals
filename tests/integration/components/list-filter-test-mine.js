@@ -1,19 +1,15 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, triggerKeyEvent } from '@ember/test-helpers';
+import { render, settled, triggerKeyEvent, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { resolve } from 'rsvp';
+
+const ITEMS = [{city: 'San Francisco'}, {city: 'Portland'}, {city: 'Seattle'}];
+const FILTERED_ITEMS = [{city: 'San Francisco'}];
 
 module('Integration | Component | list-filter', function(hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function() {
-    this.actions = {};
-    this.send = (actionName, ...args) => this.actions[actionName].apply(this, args);
-  });
-
-  const ITEMS = [{city: 'San Francisco'}, {city: 'Portland'}, {city: 'Seattle'}];
-  const FILTERED_ITEMS = [{city: 'San Francisco'}];
   /*
     we want our actions to return promises,
     since they are potentially fetching data asynchronously
@@ -23,7 +19,6 @@ module('Integration | Component | list-filter', function(hooks) {
       we want our actions to return promises, since they
       potentially fetching data asynchronously
     */
-    assert.expect(2);
     this.set('filterByCity', () => resolve({ results: ITEMS }));
 
     /*
@@ -51,7 +46,7 @@ module('Integration | Component | list-filter', function(hooks) {
     */
     return settled().then(() => {
       assert.equal(this.element.querySelectorAll('.city').length, 3);
-      assert.dom(this.element.querySelector('.city')).hasText('San Francisco');
+      assert.equal(this.element.querySelector('.city').textContent.trim(), 'San Francisco');
     });
   });
 
@@ -80,12 +75,14 @@ module('Integration | Component | list-filter', function(hooks) {
       {{/list-filter}}
     `);
 
+    // fill in the input field with 's'
+    await fillIn(this.element.querySelector('.list-filter input'),'s');
     // keyup event to invoke an action that will cause the list to be filtered
     await triggerKeyEvent(this.element.querySelector('.list-filter input'), "keyup", 83);
 
     return settled().then(() => {
-      assert.ok(this.element.querySelectorAll('.city'), 'One result returned');
-      assert.dom(this.element.querySelector('.city')).hasText('San Francisco');
+      assert.equal(this.element.querySelectorAll('.city').length, 1, 'One result returned');
+      assert.equal(this.element.querySelector('.city').textContent.trim(), 'San Francisco');
     });
   });
 

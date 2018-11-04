@@ -3,8 +3,8 @@
   article 은 indepedent, self contained content 를 specify 한다.
   site 의 나머지 부분으로 부터 독립적으로 distribute 하는 것이 가능하다.
 -->
-<article class="listing">
 
+<article class="listing">
   <!--
     user 가 clicking 과 같은 UI 와 interact 할때, action 의 function 은
     call 되어진다.
@@ -12,26 +12,35 @@
     .listing .wide img
     .listing .wide small
   -->
-  <a {{action 'toggleImageSize'}} class="image {{if isWide "wide"}}">
-    <img src="{{rental.image}}" alt="" />
+  <a
+    onclick={{action "toggleImageSize"}}
+    role="button"
+    class="image {{if isWide "wide"}}"
+  >
+    <img src={{rental.image}} alt="">
     <small>View Larger</small>
   </a>
 
-  <h3>{{rental.title}}</h3>
+  <h3>{{link-to rental.title "rentals.show" rental class=rental.id}}</h3>
+
   <div class="detail owner">
-    <span>Owner:</span>{{rental.owner}}
+    <span>Owner:</span> {{rental.owner}}
   </div>
+
   <div class="detail type">
     <!--
       rental-property-type is custom helper
     -->
-    <span>Type:</span>{{rental-property-type rental.category}} - {{rental.category}}
+    <span>Type:</span> {{rental-property-type rental.category}} - {{rental.category}}
   </div>
+
   <div class="detail location">
-    <span>Location:</span>{{rental.city}}
+    <span>Location:</span> {{rental.city}}
   </div>
+
   <div class="detail bedrooms">
-    <span>Number of bedrooms:</span>{{rental.bedrooms}}
+    <span>Number of bedrooms:</span> {{rental.bedrooms}}
   </div>
+
   {{location-map location=rental.city}}
 </article>

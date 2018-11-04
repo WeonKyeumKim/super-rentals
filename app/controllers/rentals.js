@@ -33,8 +33,8 @@ export default Controller.extend({
           return this.store.findAll('rental');
         }
         */
-        return this.store.query('rental', {city: param }).then((results) => {
-          return { query: param, results: results };
+        return this.store.query('rental', {city: param }).then((filteredResults) => {
+          return { query: param, results: filteredResults };
         });
       } else {
         return this.store.findAll('rental').then((results) => {
