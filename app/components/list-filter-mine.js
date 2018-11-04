@@ -2,8 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['list-filter'],
-  /* value: cityInput */
-  value: '',
+  cityInput: '',
 
   init() {
     /*
@@ -12,14 +11,14 @@ export default Component.extend({
       parameter 들을 encapsulate 하는 것이다.
     */
     this._super(...arguments);
-
     /* async
     this.cityInputAction('').then((results) =>
       this.set('results', results));
-    filter: cityInputAction
-
     */
-    this.filter('').then((allResults) => this.set('results', allResults.results));
+
+    this.cityInputAction('').then((allResults) => {
+      this.set('results', allResults.results);
+    });
   },
 
   actions: {
@@ -34,24 +33,20 @@ export default Component.extend({
     handleFilterEntry() {
       /*
         from list-filter.hbs input
-        this.value: this.cityInput
-        this.filter: this.cityInputAction
+        this.value:
       */
-      let filterInputValue = this.value;
-      let filterAction = this.filter;
+      let filterInputValue = this.cityInput;
+      let filterAction = this.cityInputAction;
 
       /* async
       filterAction(filterInputValue).then((filterResults) =>
         this.set('results', filterResults));
       )
-      */
 
-      /*
-        this.value: this.cityInput 
       */
-      filterAction(filterInputValue).then((resultsObj) => {
-        if (resultsObj.query === this.value) {
-          this.set('results', resultsObj.results);
+      filterAction(filterInputValue).then((filterResults) => {
+        if (filterResults.query === this.cityInput) {
+          this.set('results', filterResults.results);
         }
       });
     }
